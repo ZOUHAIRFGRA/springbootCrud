@@ -1,5 +1,6 @@
 package com.example.usersCrud.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -31,6 +32,7 @@ public class User {
     private Set<Post> posts = new HashSet<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference("user-comments") // Matches Comment's reference name
     private Set<Comment> comments = new HashSet<>();
 
 
